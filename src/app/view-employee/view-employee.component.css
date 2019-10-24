@@ -1,0 +1,13 @@
+table {
+    border-collapse: collapse;
+    width: 100%;
+}
+  
+table, th, td {
+border: 1px solid black;
+}
+
+.infrrd-img{
+    height: 60px;
+    width: 60px;
+}

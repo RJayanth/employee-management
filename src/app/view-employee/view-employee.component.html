@@ -1,0 +1,33 @@
+<hr>
+<div *ngIf = "this.isEmployeeListEmpty">
+    <p> Hey buddy! no employees exist currently, feel free to add one <a [routerLink]="['/addnewemployee']"> here </a></p>
+</div>
+<table>
+    <thead>
+        <tr>
+            <th>Avatar</th>
+            <th>Name</th>
+            <th>Company Name</th>
+            <th>Email ID</th>
+            <th>Contact No</th>
+            <th>Designation</th>
+            <th> Actions </th>
+        </tr>              
+        <tr *ngFor = "let employee of this.els.employeeArray; let idx = index">
+            <td> <img src="{{employee.avatar}}" class="infrrd-img"></td>
+            <!-- <td> <img src="../../assets/0.JPG" class="infrrd-img"></td> -->
+
+            <td> <input type="text" [(ngModel)]= "employee.name" [disabled] = "!employee.isEditable"> </td>
+            <td> <input type="text" [(ngModel)] = "employee.companyName" [disabled] = "!employee.isEditable"> </td>
+            <td> <input type="text" [(ngModel)] = "employee.emailID" [disabled]= "!employee.isEditable"> </td>
+            <td> <input type="text" [(ngModel)] = "employee.contactNumber" [disabled]= "!employee.isEditable"></td>
+            <td> <input type="text" [(ngModel)] = "employee.designation" [disabled]= "!employee.isEditable"></td>
+            <td> 
+                <button class="infrrd-btn infrrd-bg-blue" *ngIf = "!employee.isEditable" (click)="employee.isEditable = !employee.isEditable"> Edit</button>
+                <button class="infrrd-btn infrrd-bg-green" *ngIf = "employee.isEditable" (click)="employee.isEditable = !employee.isEditable"> Save </button>
+                <button class="infrrd-btn infrrd-bg-red" (click) = 'removeEmployee(employee, idx)'> Delete Employee </button>
+            </td>
+            
+        </tr>
+    </thead>
+</table>

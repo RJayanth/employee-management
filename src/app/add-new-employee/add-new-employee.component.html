@@ -1,0 +1,16 @@
+<hr>
+<h2> Add New Employee</h2>
+<form #playlistForm="ngForm">
+    <input type="text" class="infrrd-txt" [(ngModel)]="name" autocomplete="off" name="name" placeholder="Enter the Name"> <br>
+    <input type="text" class="infrrd-txt" [(ngModel)]="companyName" autocomplete="off" name="companyName" placeholder="Enter the company name of employee"> <br>
+    <input type="email" class="infrrd-txt" required [(ngModel)]="emailID" autocomplete="off" name="emailID" placeholder="Enter valid email" name="emailID" #email="ngModel"> 
+    <span *ngIf="email.touched && !email.valid ">Please enter the Email Value</span>  
+    <br>         
+    <input type="number" class="infrrd-txt" [(ngModel)]="contactNumber" autocomplete="off" name="contactNumber" placeholder="Enter the contact number"> <br>
+    <input type="text" class="infrrd-txt" [(ngModel)]="designation" autocomplete="off" name="designation" placeholder="Enter the designation of the employee"> <br>    
+    <button class="infrrd-btn infrrd-bg-blue" (click)="onSubmit()" [disabled]="!playlistForm.valid"> Add Employee</button>
+    <button class="infrrd-btn infrrd-bg-green" (click)="playlistForm.reset(playlistForm)"> Reset</button> <br>
+    <span> Note: Add Employee button enables once you complete all the fields</span> 
+</form>
+
+
